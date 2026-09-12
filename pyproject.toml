@@ -1,5 +1,5 @@
 [project]
-name = "podigger-backend"
+name = "podigger-django-backend"
 version = "0.1.0"
 description = "Podigger Django Backend"
 requires-python = ">=3.12,<3.13"
@@ -64,7 +64,6 @@ version_files = [
 ]
 update_changelog_on_bump = true
 tag_format = "v$version"
-changelog_file = "../CHANGELOG.md"
+changelog_file = "CHANGELOG.md"
 changelog_incremental = true
 changelog_start_rev = "HEAD"
-

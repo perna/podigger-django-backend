@@ -1,31 +1,25 @@
-Podigger backend (Django)
+Podigger Django backend
 
-This folder contains a minimal Django 5.2.8 project skeleton used while migrating the original Flask app.
+This repository contains the Django backend and Celery workers for Podigger.
 
-How to run (development):
+How to run locally:
 
-1. Build containers using the repo-level compose file:
-
-```bash
-docker compose -f ../docker-compose.django.yml up --build
-```
-
-2. The Django dev server will be available at [http://localhost:8000](http://localhost:8000) (after `manage.py` and migrations run).
-
-Dependency installation
-
-- The Docker image installs Python packages using pip and the `backend/requirements.txt` file.
-- To work locally, create and activate a virtual environment and install dependencies with pip:
+1. Start PostgreSQL and Redis.
+2. Create `.env` from `.env.example`.
+3. Install dependencies and run migrations:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r backend/requirements.txt
+uv pip install --system -r requirements-dev.txt
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000
 ```
 
-If you'd prefer a modern project manager (Poetry, PDM, etc.) we can add that later; for now we stick to the conventional pip workflow to keep the development flow simple.
+The production image is built by GitHub Actions and deployed by
+`podigger-infra`. It is not built on the VPS.
 
+```bash
+pytest
+```
 
-Notes:
-- Database credentials are read from environment variables in `config/settings.py`.
-- Linting is configured with `ruff` via `pyproject.toml`.
+Database credentials are read from environment variables in `config/settings.py`.
+Linting is configured with Ruff in `pyproject.toml`.

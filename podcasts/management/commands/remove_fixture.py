@@ -13,7 +13,7 @@ class Command(BaseCommand):
         """Register command-line arguments used by this management command.
 
         Adds a positional optional `fixture` argument (path to the JSON fixture; defaults to
-        backend/podcasts/fixtures/initial_fake_seed.json) and a `--dry-run` flag to simulate deletions.
+        podcasts/fixtures/initial_fake_seed.json) and a `--dry-run` flag to simulate deletions.
 
         Parameters:
             parser (argparse.ArgumentParser): The parser to register the arguments on.
@@ -21,7 +21,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "fixture",
             nargs="?",
-            default="backend/podcasts/fixtures/initial_fake_seed.json",
+            default="podcasts/fixtures/initial_fake_seed.json",
             help="Path to the fixture JSON file to remove records from",
         )
         parser.add_argument(

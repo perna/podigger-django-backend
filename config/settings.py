@@ -3,14 +3,14 @@ from datetime import timedelta
 from pathlib import Path
 
 # Use django-environ to manage environment variables and .env files. This
-# lets developers keep a local `backend/.env` file (ignored by git) while
+# lets developers keep a local `.env` file (ignored by git) while
 # CI and production can inject secrets via environment variables.
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Read environment from `backend/.env` (if present) and the process env.
+# Read environment from `.env` (if present) and the process env.
 env = environ.Env(
     DJANGO_DEBUG=(bool, True),
 )

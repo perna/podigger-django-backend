@@ -1,5 +1,5 @@
 # URL Configuration for Health Check
-# Add this to backend/config/urls.py
+# Add this to config/urls.py
 
 from django.contrib import admin
 from django.urls import include, path
