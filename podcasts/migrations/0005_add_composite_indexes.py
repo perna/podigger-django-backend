@@ -5,6 +5,7 @@ so the migration is safe to apply against a populated database without
 taking a long-running write lock. The migration is therefore non-atomic
 (the same pattern as `0003_add_search_index.py`).
 """
+
 from django.db import migrations
 
 
