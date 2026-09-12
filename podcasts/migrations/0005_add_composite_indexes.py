@@ -24,8 +24,7 @@ class Migration(migrations.Migration):
                 "ON podcasts_episode (podcast_id, published DESC);"
             ),
             reverse_sql=(
-                "DROP INDEX CONCURRENTLY IF EXISTS "
-                "episode_podcast_published_idx;"
+                "DROP INDEX CONCURRENTLY IF EXISTS episode_podcast_published_idx;"
             ),
         ),
         migrations.RunSQL(
@@ -35,8 +34,7 @@ class Migration(migrations.Migration):
                 "ON podcasts_popularterm (term);"
             ),
             reverse_sql=(
-                "DROP INDEX CONCURRENTLY IF EXISTS "
-                "podcasts_popularterm_term_idx;"
+                "DROP INDEX CONCURRENTLY IF EXISTS podcasts_popularterm_term_idx;"
             ),
         ),
     ]

@@ -94,7 +94,19 @@ jobs:
     needs: image
     runs-on: ubuntu-latest
     steps:
+      - name: Check dispatch token
+        id: token
+        env:
+          INFRA_DISPATCH_TOKEN: ${{ secrets.INFRA_DISPATCH_TOKEN }}
+        run: |
+          if [ -n "$INFRA_DISPATCH_TOKEN" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "INFRA_DISPATCH_TOKEN is not configured; skipping deployment request."
+          fi
       - uses: peter-evans/repository-dispatch@v3
+        if: steps.token.outputs.configured == 'true'
         with:
           token: ${{ secrets.INFRA_DISPATCH_TOKEN }}
           repository: perna/podigger-infra
