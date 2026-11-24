@@ -24,6 +24,7 @@ dependencies = [
     "feedparser>=6.0.12",
     "requests>=2.34.2",
     "djangorestframework-simplejwt>=5.5.1",
+    "packaging>=24.2",
 ]
 
 

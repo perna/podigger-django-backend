@@ -40,6 +40,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 USER app
 
+# Fail the production image build if Celery's Redis transport dependency is
+# absent. The worker imports this module before it can connect to the broker.
+RUN python -c "import packaging.version; import kombu.transport.redis"
+
 ARG DJANGO_SECRET_KEY=build-only-dummy-key
 RUN python manage.py collectstatic --noinput || true
 
